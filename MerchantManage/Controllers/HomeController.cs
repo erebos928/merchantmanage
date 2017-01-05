@@ -7,34 +7,44 @@ using System.Web.Mvc;
 
 namespace MerchantManage.Controllers
 {
+    
     public class HomeController : Controller
     {
+        public static MerchantManagerFactory merchantManagerFactory;
         public ActionResult Index()
         {
 
-            return View();
+            return View("Addition");
         }
         public ActionResult AddMerchant()
         {
+
             String merid = Request.Form["merid"];
+            if (merid == null)
+                return View("AddPage");
             String uri = Request.Form["uri"];
             Merchant merchant = new Merchant(merid, uri);
             Save(merchant);
-            return View();
+            ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
+            return View("SearchResult");
         }
         public ActionResult SearchMerchant()
         {
-            Merchant mer1 = new Merchant("id325", "http://exemple.com/service");
-            Merchant mer2 = new Merchant("id893", "http://somehost.com/point");
+            String str = Request.Form["merid"];
+            if (str == null)
+                return View("SearchPage");
+            Merchant mer = merchantManagerFactory.CreateMerchantManager().FindById(str);
             List<Merchant> lst = new List<Merchant>();
-            lst.Add(mer1);
-            lst.Add(mer2);
-            ViewBag.Results = lst;
+            if (mer != null)
+                lst.Add(mer);
+            ViewBag.Results = lst; 
             return View("SearchResult");
         }
         private void Save(Merchant merchant)
         {
             //throw new NotImplementedException();
+            MerchantManager manager = merchantManagerFactory.CreateMerchantManager();
+            manager.Add(merchant);
         }
 
         public ActionResult About()

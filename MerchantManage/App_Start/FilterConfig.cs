@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using MerchantManage.Controllers;
+using System.Web;
 using System.Web.Mvc;
 
 namespace MerchantManage
@@ -8,6 +9,7 @@ namespace MerchantManage
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            HomeController.merchantManagerFactory = new test.MockMerchantManagerFactory();
         }
     }
 }
