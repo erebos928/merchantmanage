@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MerchantManage.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,30 @@ namespace MerchantManage.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
+        }
+        public ActionResult AddMerchant()
+        {
+            String merid = Request.Form["merid"];
+            String uri = Request.Form["uri"];
+            Merchant merchant = new Merchant(merid, uri);
+            Save(merchant);
+            return View();
+        }
+        public ActionResult SearchMerchant()
+        {
+            Merchant mer1 = new Merchant("id325", "http://exemple.com/service");
+            Merchant mer2 = new Merchant("id893", "http://somehost.com/point");
+            List<Merchant> lst = new List<Merchant>();
+            lst.Add(mer1);
+            lst.Add(mer2);
+            ViewBag.Results = lst;
+            return View("SearchResult");
+        }
+        private void Save(Merchant merchant)
+        {
+            //throw new NotImplementedException();
         }
 
         public ActionResult About()

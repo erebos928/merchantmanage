@@ -1,0 +1,25 @@
+﻿
+@{
+
+    Layout = null;
+
+}
+@model MerchantManage.Models.Merchant
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SearchResult</title>
+</head>
+<body>
+    <div> 
+        <table border="1">
+            <tr><td>Merchant Id</td><td>URI</td></tr>
+            @foreach (var mer in ViewBag.Results){
+            <tr><td>@mer.merid</td><td>@mer.uri</td></tr>
+                }
+        </table>
+    </div>
+</body>
+</html>
