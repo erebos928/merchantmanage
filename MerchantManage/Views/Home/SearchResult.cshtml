@@ -15,10 +15,10 @@
 <body>
     <div> 
         <table border="1">
-            <tr><td>Merchant Id</td><td>URI</td></tr>
+            <tr><td>Merchant Id</td><td>URI</td><td>Logo</td><td>User name</td></tr>
             @foreach (var mer in ViewBag.Results){
-            <tr><td>@mer.merid</td><td>@mer.uri</td></tr>
-                }
+            <tr><td>@mer.merid</td><td>@mer.uri</td><td>@mer.logo</td><td>@mer.username</td></tr>
+            }
         </table>
     </div>
 </body>

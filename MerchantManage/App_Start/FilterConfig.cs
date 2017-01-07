@@ -9,7 +9,7 @@ namespace MerchantManage
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            HomeController.merchantManagerFactory = new test.MockMerchantManagerFactory();
+            
         }
     }
 }

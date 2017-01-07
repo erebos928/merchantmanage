@@ -10,7 +10,7 @@ namespace MerchantManage.Controllers
     
     public class HomeController : Controller
     {
-        public static MerchantManagerFactory merchantManagerFactory;
+        
         public ActionResult Index()
         {
 
@@ -18,18 +18,25 @@ namespace MerchantManage.Controllers
         }
         public ActionResult AddMerchant()
         {
-
+            MerchantManagerFactory merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
             String merid = Request.Form["merid"];
             if (merid == null)
                 return View("AddPage");
             String uri = Request.Form["uri"];
             Merchant merchant = new Merchant(merid, uri);
+            String username = Request.Form["username"];
+            String password = Request.Form["password"];
+            String logo = Request.Form["logo"];
+            merchant.username = username;
+            merchant.password = password;
+            merchant.logo = logo;
             Save(merchant);
             ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
             return View("SearchResult");
         }
         public ActionResult SearchMerchant()
         {
+            MerchantManagerFactory merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
             String str = Request.Form["merid"];
             if (str == null)
                 return View("SearchPage");
@@ -43,6 +50,7 @@ namespace MerchantManage.Controllers
         private void Save(Merchant merchant)
         {
             //throw new NotImplementedException();
+            MerchantManagerFactory merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
             MerchantManager manager = merchantManagerFactory.CreateMerchantManager();
             manager.Add(merchant);
         }

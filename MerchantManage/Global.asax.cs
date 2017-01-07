@@ -16,6 +16,7 @@ namespace MerchantManage
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            System.Web.HttpContext.Current.Application["merchantManagerFactory"] = new test.MockMerchantManagerFactory();
         }
     }
 }
