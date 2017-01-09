@@ -13,5 +13,6 @@ namespace MerchantManage.Models
         Merchant FindById(String id);
         Merchant FindByName(String name);
         List<Merchant> GetAll();
+        Merchant ResolveMerchant(System.Web.HttpRequestBase req);
     }
 }

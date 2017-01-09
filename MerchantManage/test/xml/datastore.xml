@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalogue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///E:/bdeb/5/projetfinal/prj/xml/catalogue.xsd">
+	<Zone>
+			<Logo>hhhhhh</Logo>
+			<Division preferredName="Walmart">
+				<Logo>dddddddddddd</Logo>
+        <Category id="0">
+          <Category id="1">
+            <Category id="1.1">
+              <Category id="1.1.2">
+                <Item>
+                  <Feature id="f.1">3.5 cu. ft. Arctic King freezer</Feature>
+                  <!-- Title -->
+                  <Feature id="f.4">279.89</Feature>
+                  <!-- Price -->
+                  <Feature id="f.5">C</Feature>
+                  <!-- Currency -->
+                  <Feature id="f.6">115</Feature>
+                  <!-- voltage -->
+                  <Feature id="f.7">Arctic</Feature>
+                  <!-- brand -->
+                  <Feature id="f.8">25 kg</Feature>
+                  <!-- weight -->
+                  <Feature id="f.9">3.5 cu. ft. Arctic King freezer is perfect for small spaces. This unit offers a removable storage basket which allows for organized space, as well as easy access to your most frequently used items. Thermostat is conveniently located at the front of the freezer. The easy clean interior and gasket make it extremely easy to maintain.</Feature>
+                  <!-- description -->
+                  <Image>http://i5.walmartimages.ca/images/Large/402/381/999999-81308402381.jpg</Image>
+                </Item>
+                <Item>
+                  <Feature id="f.1">Diplomat 3.5 cu.ft Compact Chest Freezer</Feature>
+                  <!-- Title -->
+                  <Feature id="f.4">199.97</Feature>
+                  <!-- Price -->
+                  <Feature id="f.5">C</Feature>
+                  <!-- Currency -->
+                  <Feature id="f.6">115</Feature>
+                  <!-- voltage -->
+                  <Feature id="f.7">Diplomat</Feature>
+                  <!-- brand -->
+                  <Feature id="f.8">20 kg</Feature>
+                  <!-- weight -->
+                  <Feature id="f.9">If you’re on the lookout for a modern, compact chest freezer your search can end here. This model offers 3.5 cubic feet (98 L) of storage space and comes with an energy-efficient lid and cabinet with foam insulation to reduce electricity bills. The mechanical thermostat is mounted on the front of the unit for easy accessibility and the drain is also front-mounted, making the defrosting process quick and easy. The unit features a storage basket at the top for smaller and more frequently used items. The freezer is designed to fit flush against the wall with its smooth-back construction. You’ll be delighted with the 12-month warranty on parts and labor. </Feature>
+                  <!-- description -->
+                  <Image>http://i5.walmartimages.ca/images/Large/008/679/999999-67638008679.jpg</Image>
+                </Item>
+              </Category>
+              <Category id="1.1.1">
+                <Item>
+                  <Feature id="f.1">Danby Portable Dishwasher</Feature>
+                  <!-- Title -->
+                  <Feature id="f.4">329.97</Feature>
+                  <!-- Price -->
+                  <Feature id="f.5">C</Feature>
+                  <!-- Currency -->
+                  <Feature id="f.6">115</Feature>
+                  <!-- voltage -->
+                  <Feature id="f.7">Danby Products</Feature>
+                  <!-- brand -->
+                  <Feature id="f.8">23 kg</Feature>
+                  <!-- weight -->
+                  <Feature id="f.9">Washing has never been easier as it is with this stylish counter-top dishwasher. This unit utilizes just 3.1 gallons (11.7 liters) of water for a normal cycle. It comes with six different settings which can easily be programmed and monitored via the electronic LED display. The wash cycles range from soak, glass, rapid, economy, normal, and intensive. The dishwasher is designed for simple and quick installation as it can easily be hooked up to any tap in your kitchen. Keeping the appliance clean is a breeze due to its durable stainless-steel interior. There is an auto detergent and rinse agent dispenser for your convenience and this chic dishwashing unit is designed to fit under just about any type of kitchen cabinet. It also comes with a 12-month warranty on parts and labor. </Feature>
+                  <!-- description -->
+                  <Image>http://i5.walmartimages.ca/images/Large/004/633/999999-67638004633.jpg</Image>
+                </Item>
+
+              </Category>
+            </Category>
+            <Category id="1.2">
+              <Category id="1.2.1">
+                <Item>
+                  <Feature id="f.1">Tassimo 51 oz (1.5 liter) Single Cup Home Brewing System-T20- TAS2002UC8</Feature>
+                  <!-- Title -->
+                  <Feature id="f.4">60</Feature>
+                  <!-- Price -->
+                  <Feature id="f.5">C</Feature>
+                  <!-- Currency -->
+                  <Feature id="f.6">115</Feature>
+                  <!-- voltage -->
+                  <Feature id="f.7">Tassimo</Feature>
+                  <!-- brand -->
+                  <Feature id="f.8">3 kg</Feature>
+                  <!-- weight -->
+                  <Feature id="f.9">Makes coffee, cappuccino, latte, espresso, café crema, tea and hot chocolate.  TASSIMO reads the barcode on each T-disc to determine the specific water quantity, brew time and brew temperature for every beverage so that every beverage is made the way it was meant to be, perfect.</Feature>
+                  <!-- description -->
+                  <Image>http://i5.walmartimages.ca/images/Large/016/317/1016317.jpg</Image>
+                </Item>
+                <Item>
+                  <Feature id="f.1">Black &amp; Decker 12- Cup Single-Serve Coffeemaker- CM618C</Feature>
+                  <!-- Title -->
+                  <Feature id="f.4">21.96</Feature>
+                  <!-- Price -->
+                  <Feature id="f.5">C</Feature>
+                  <!-- Currency -->
+                  <Feature id="f.6">115</Feature>
+                  <!-- voltage -->
+                  <Feature id="f.7">Black &amp; Decker</Feature>
+                  <!-- brand -->
+                  <Feature id="f.8">3 kg</Feature>
+                  <!-- weight -->
+                  <Feature id="f.9">Makes coffee, cappuccino, latte, espresso, café crema, tea and hot chocolate.  TASSIMO reads the barcode on each T-disc to determine the specific water quantity, brew time and brew temperature for every beverage so that every beverage is made the way it was meant to be, perfect.</Feature>
+                  <!-- description -->
+                  <Image>http://i5.walmartimages.ca/images/Large/016/317/1016317.jpg</Image>
+                </Item>
+              </Category>
+              <Category id="1.2.2">
+                <Item>
+                  <Feature id="f.1">Panasonic 1.3 cu.ft. Countertop Microwave Oven</Feature>
+                  <!-- Title -->
+                  <Feature id="f.4">139.97</Feature>
+                  <!-- Price -->
+                  <Feature id="f.5">C</Feature>
+                  <!-- Currency -->
+                  <Feature id="f.6">115</Feature>
+                  <!-- voltage -->
+                  <Feature id="f.7">Panasonic</Feature>
+                  <!-- brand -->
+                  <Feature id="f.8">8 kg</Feature>
+                  <!-- weight -->
+                  <Image>http://i5.walmartimages.ca/images/Large/267/893/999999-885170267893.jpg</Image>
+                </Item>
+                <Item>
+                  <Feature id="f.1">LG 1.5 cu.ft. Countertop Microwave</Feature>
+                  <!-- Title -->
+                  <Feature id="f.4">199.97</Feature>
+                  <!-- Price -->
+                  <Feature id="f.5">C</Feature>
+                  <!-- Currency -->
+                  <Feature id="f.6">115</Feature>
+                  <!-- voltage -->
+                  <Feature id="f.7">LG</Feature>
+                  <!-- brand -->
+                  <Feature id="f.8">8 kg</Feature>
+                  <!-- weight -->
+                  <Image>http://i5.walmartimages.ca/images/Large/153/1st/29972-LMS1531ST.jpg</Image>
+                </Item>
+
+              </Category>
+            </Category>
+          </Category>
+          <Category id="2">
+            <Category id="2.1">
+              <!--Men-->
+              <Item>
+                <Feature id="f.1">Marvel Men's Sleep Pant</Feature>
+                <!-- Title -->
+                <Feature id="f.4">7</Feature>
+                <!-- Price -->
+                <Feature id="f.5">C</Feature>
+                <!-- Currency -->
+
+                <Feature id="f.7">Marvel</Feature>
+                <!-- brand -->
+                <Feature id="f.2">L,XL</Feature>
+                <!--size-->
+                <Feature id="f.9">Perfect for Fall, this Men's sleep pant is made from comfortable poly micro fleece and features Marvel Deadpool graphics.</Feature>
+                <!-- description -->
+                <Image>http://i5.walmartimages.ca/images/Large/160/419/999999-686216160419.jpg</Image>
+                <Image>http://i5.walmartimages.ca/images/Large/041/9_1/999999-686216160419_1.jpg</Image>
+
+              </Item>
+              <Item>
+                <Feature id="f.1">Stanfield's Men's Essentials Athletic Shirt, Pack of 2</Feature>
+                <!-- Title -->
+                <Feature id="f.4">5.49-10.99</Feature>
+                <!-- Price -->
+                <Feature id="f.5">C</Feature>
+                <!-- Currency -->
+
+                <Feature id="f.7">Stanfield's</Feature>
+                <!-- brand -->
+                <Feature id="f.2">S-XL</Feature>
+                <!--size-->
+                <Feature id="f.9">The perfect men's athletic shirt for every day. This men's A-shirt by Stanfield's Essentials is made from a durable 100% cotton rib fabric for absorbent comfort. The rib knit ensures close to the body fit for a sleek appearance under clothes. Tagless labelling ensures the ultimate comfort next to skin. It is a great addition to your underwear drawer. </Feature>
+                <!-- description -->
+                <Image>http://i5.walmartimages.ca/images/Large/632/351/999999-067205632351.jpg</Image>
+                <Image>http://i5.walmartimages.ca/images/Large/235/1_1/999999-067205632351_1.jpg</Image>
+
+              </Item>
+            </Category>
+            <Category id="2.2">
+              <!--women-->
+              <Category id="2.2.1">
+                <!--coats-->
+                <Item>
+                  <Feature id="f.1">George Women’s Down Blend Parka</Feature>
+                  <!-- Title -->
+                  <Feature id="f.4">41</Feature>
+                  <!-- Price -->
+                  <Feature id="f.5">C</Feature>
+                  <!-- Currency -->
+                  <Feature id="f.3">Olive</Feature>
+                  <Feature id="f.7">George</Feature>
+                  <!-- brand -->
+                  <Feature id="f.2">S-XL</Feature>
+                  <!--size-->
+                  <Feature id="f.9">Get ready to tackle winter in this beautiful and warm parka from George.</Feature>
+                  <!-- description -->
+                  <Image>http://i5.walmartimages.ca/images/Large/004/001/889565004001.jpg</Image>
+                </Item>
+                <Item>
+                  <Feature id="f.1">Canadiana Ladies' Down-Blend Bomber Jacket</Feature>
+                  <!-- Title -->
+                  <Feature id="f.4">99.97</Feature>
+                  <!-- Price -->
+                  <Feature id="f.5">C</Feature>
+                  <!-- Currency -->
+                  <Feature id="f.3">Blue</Feature>
+                  <Feature id="f.7">Canadiana</Feature>
+                  <!-- brand -->
+                  <Feature id="f.2">XS-XL</Feature>
+                  <!--size-->
+                  <Feature id="f.9">A stylish bomber jacket for those cold winter days! Our gorgeous down blend Canadiana™ bomber jacket is available in 3 great colours and has a stand collar, zip front with placket, rib knit cuffs and hem, and a faux fur trimmed hood to shield you from the wind and snow.</Feature>
+                  <!-- description -->
+                  <Image>http://i5.walmartimages.ca/images/Large/124/173/999999-58184124173.jpg</Image>
+                  <Image>http://i5.walmartimages.ca/images/Large/417/3_1/999999-58184124173_1.jpg</Image>
+                  <Image>http://i5.walmartimages.ca/images/Large/417/3_2/999999-58184124173_2.jpg</Image>
+                </Item>
+              </Category>
+            </Category>
+            <Category id="2.3">
+              <Category id="2.3.1">
+                <Category id="2.3.1.1">
+                  <Item>
+                    <Feature id="f.1">Genuine Dickies Boy’s Classic Fit Double Knee Twill Pant</Feature>
+                    <!-- Title -->
+                    <Feature id="f.4">22</Feature>
+                    <!-- Price -->
+                    <Feature id="f.5">C</Feature>
+                    <!-- Currency -->
+                    <Feature id="f.3">Black,Navy</Feature>
+                    <Feature id="f.7">Genuine Dickies</Feature>
+                    <!-- brand -->
+                    <Feature id="f.2">4-18</Feature>
+                    <!--size-->
+                    <Feature id="f.9">This Genuine Dickies Boy’s Classic Fit Double Knee pant has it all. This innovative flat front pant features double knee panels that are constructed with two layers of fabric for added durability at the knee. The interior FlexWaist® adjustable waistband lets you tailor the fit at the waist. This pant is crafted from durable, wrinkle resistant poly/cotton twill cloth which has a stain release finish to help prevent stains from setting in. Dickies: Guaranteed workwear since 1922. .</Feature>
+                    <!-- description -->
+                    <Image>http://i5.walmartimages.ca/images/Large/533/469/999999-607645533469.jpg</Image>
+                    <Image>http://i5.walmartimages.ca/images/Large/346/9_1/999999-607645533469_1.jpg</Image>
+                  </Item>
+                </Category>
+              </Category>
+            </Category>
+            <Category id="2.4">
+              <Category id="2.4.1">
+                <Category id="2.4.1.1"></Category>
+                <Category id="2.4.1.2"></Category>
+              </Category>
+            </Category>
+            <Category id="2.5">
+              <Category id="2.5.1"></Category>
+              <Category id="2.5.2"></Category>
+              <Category id="2.5.3"></Category>
+              <Category id="2.5.4"></Category>
+            </Category>
+          </Category>
+        </Category>
+			</Division>
+	</Zone>
+</Catalogue>

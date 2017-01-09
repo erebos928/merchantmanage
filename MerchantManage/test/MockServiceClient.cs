@@ -1,0 +1,80 @@
+﻿using MerchantManage.Models;
+using Saxon.Api;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Xml;
+
+namespace MerchantManage.test
+{
+    public class MockServiceClient : ServiceClient
+    {
+        public string SendRequest(Merchant mer)
+        {
+            Processor processor = new Processor();
+            DocumentBuilder docBuilder = processor.NewDocumentBuilder();
+            string path = @"E:\csharp\MerchantManage\MerchantManage\test\xml\datastore.xml";
+            XmlDocument dok = new XmlDocument();
+            dok.Load(path);
+            XdmNode doc = docBuilder.Wrap(dok);
+            XPathCompiler xcompiler = processor.NewXPathCompiler();
+            List<String> lst = mer.parts;
+            String element = "";
+            if (lst.Count > 0)
+             element = lst.Last();
+            String catid = Categories.GetCode(element);
+            String xpathexpression = String.Format("descendant::Category[@id=\"{0}\"]/*", catid);
+            XdmValue results = xcompiler.Evaluate(xpathexpression, doc);
+            
+
+            if (results != null)
+            {
+                XmlDocument dock = new XmlDocument();
+                dock.Load(@"E:\csharp\MerchantManage\MerchantManage\test\xml\Division.xml");
+
+                DocumentBuilder buil = processor.NewDocumentBuilder();
+                XdmNode nd = buil.Wrap(dock);
+                XPathExecutable xx = xcompiler.Compile("//Catalogue//Zone//Division");
+                XPathSelector selector = xx.Load();
+                selector.ContextItem = nd;
+                XdmItem it = selector.EvaluateSingle();
+                XmlNode xmlnode = ((XdmNode)it).getUnderlyingXmlNode();
+                foreach (Object item in results)
+                {
+                    XdmNode nde = (XdmNode)item;
+                    XmlNode xr = nde.getUnderlyingXmlNode();
+                    XmlNode xn = dock.ImportNode(xr, true);
+                    xmlnode.AppendChild(xn);
+                }
+                return dock.InnerXml;
+            }
+            return "";
+        }
+        String CreateFinalDoc(String s,String catid,Merchant mer)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(s);
+            XmlElement el = doc.GetElementById(catid);
+            if (el != null)
+            {
+                XmlDocument finaldoc = new XmlDocument();
+                XmlElement cataEl = finaldoc.CreateElement("Catalogue");
+                XmlElement zoneEl = finaldoc.CreateElement("Zone");
+                XmlElement divEl = finaldoc.CreateElement("Division");
+                XmlElement logoEl = finaldoc.CreateElement("Logo");
+                XmlAttribute divAttr = finaldoc.CreateAttribute("preferredName");
+                divAttr.Value = mer.merid;
+                divEl.Attributes.Append(divAttr);
+                divEl.AppendChild(el);
+                zoneEl.AppendChild(divEl);
+                cataEl.AppendChild(zoneEl);
+                finaldoc.AppendChild(cataEl);
+                return finaldoc.InnerXml;
+            }
+            return el.InnerXml;
+        }
+    }
+}

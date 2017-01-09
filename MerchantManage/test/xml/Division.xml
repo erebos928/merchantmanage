@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Catalogue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///E:/bdeb/5/projetfinal/prj/xml/catalogue.xsd">
+  <Zone>
+    <Logo>hhhhhh</Logo>
+    <Division preferredName="Aztech">
+      <Logo>dddddddddddd</Logo>
+    </Division>
+  </Zone>
+</Catalogue>

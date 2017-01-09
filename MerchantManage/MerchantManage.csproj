@@ -49,6 +49,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="saxon9he-api, Version=9.7.0.14, Culture=neutral, PublicKeyToken=e1fdd002d5083fe6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Saxon-HE.9.7.0.14\lib\net40\saxon9he-api.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -168,8 +172,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\HeadController.cs" />
+    <Compile Include="test\Categories.cs" />
     <Compile Include="Models\Merchant.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,10 +185,14 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MerchantManager.cs" />
     <Compile Include="Models\MerchantManagerFactory.cs" />
+    <Compile Include="Models\ServiceClient.cs" />
+    <Compile Include="Models\ServiceClientFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="test\MockMerchantManager.cs" />
     <Compile Include="test\MockMerchantManagerFactory.cs" />
+    <Compile Include="test\MockServiceClient.cs" />
+    <Compile Include="test\MockServiceClientFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -205,6 +215,10 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="test\xml\datastore.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="test\xml\Division.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -216,9 +230,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admin\About.cshtml" />
+    <Content Include="Views\Admin\Contact.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -239,13 +253,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\SearchResult.cshtml" />
-    <Content Include="Views\Home\Addition.cshtml" />
-    <Content Include="Views\Home\SearchPage.cshtml" />
-    <Content Include="Views\Home\AddPage.cshtml" />
+    <Content Include="Views\Admin\SearchResult.cshtml" />
+    <Content Include="Views\Admin\Addition.cshtml" />
+    <Content Include="Views\Admin\SearchPage.cshtml" />
+    <Content Include="Views\Admin\AddPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Zone\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

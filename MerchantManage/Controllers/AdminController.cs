@@ -8,12 +8,11 @@ using System.Web.Mvc;
 namespace MerchantManage.Controllers
 {
     
-    public class HomeController : Controller
+    public class AdminController : Controller
     {
         
         public ActionResult Index()
         {
-
             return View("Addition");
         }
         public ActionResult AddMerchant()
