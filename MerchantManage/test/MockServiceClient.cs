@@ -62,13 +62,15 @@ namespace MerchantManage.test
                 {
                     XmlElement eli = (XmlElement)((XdmNode)targetnode).getUnderlyingXmlNode();
                     XmlNode xm = dock.ImportNode(eli, true);
+                    
                     XmlNode w = xm.CloneNode(false);
                     target.AppendChild(w);
+                    
                     XmlNodeList children =  xm.ChildNodes;
+                    
                     foreach (XmlNode c in children)
                     {
-
-                        XmlNode p = c.CloneNode(false);
+                        XmlNode p = c.CloneNode((c is XmlElement) && ((XmlElement)c).Name.Equals("Item"));
                         target.AppendChild(p);
                     }
                 }

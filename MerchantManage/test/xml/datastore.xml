@@ -4,10 +4,10 @@
 			<Logo>hhhhhh</Logo>
 			<Division preferredName="Walmart">
 				<Logo>dddddddddddd</Logo>
-        <Category id="0">
+        <Category id="0" preferredName="Aztech">
           <Category id="1">
             <Category id="1.1">
-              <Category id="1.1.2">
+              <Category id="1.1.2" preferredName="Congelateur">
                 <Item>
                   <Feature id="f.1">3.5 cu. ft. Arctic King freezer</Feature>
                   <!-- Title -->
