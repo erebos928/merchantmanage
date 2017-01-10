@@ -24,7 +24,7 @@ namespace MerchantManage.test
             dic.Add("Coats", "2.2.1");
             dic.Add("Boys", "2.3");
             dic.Add("Boys-Bottom", "2.3.1");
-            dic.Add("Boys-pants", "2.3.1.1");
+            dic.Add("Boys-Pants", "2.3.1.1");
             dic.Add("Boys-Denim", "2.3.1.2");
             dic.Add("Girls", "2.4");
             dic.Add("Girls-Bottom", "2.4.1");

@@ -12,7 +12,7 @@ namespace MerchantManage.test
 {
     public class MockServiceClient : ServiceClient
     {
-        public string SendRequest(Merchant mer)
+        public string SendRequest(Merchant mer,String currentNode)
         {
             Processor processor = new Processor();
             DocumentBuilder docBuilder = processor.NewDocumentBuilder();
@@ -21,18 +21,59 @@ namespace MerchantManage.test
             dok.Load(path);
             XdmNode doc = docBuilder.Wrap(dok);
             XPathCompiler xcompiler = processor.NewXPathCompiler();
-            List<String> lst = mer.parts;
-            String element = "";
-            if (lst.Count > 0)
-             element = lst.Last();
-            String catid = Categories.GetCode(element);
-            String xpathexpression = String.Format("descendant::Category[@id=\"{0}\"]/*", catid);
-            XdmValue results = xcompiler.Evaluate(xpathexpression, doc);
-            
+            /* List<String> lst = mer.parts;
+             String element = "";
+             if (lst.Count > 0)
+              element = lst.Last();*/
+            String catid = currentNode;//Categories.GetCode(element);
+            String xpathexpression = String.Format("descendant-or-self::Category[@id=\"{0}\"]", catid);
+            XPathExecutable xe = xcompiler.Compile(xpathexpression);
+            XPathSelector selec = xe.Load();
+            selec.ContextItem = doc;
+            XdmItem targetnode = selec.EvaluateSingle();
 
-            if (results != null)
+            if (targetnode != null)
             {
                 XmlDocument dock = new XmlDocument();
+                XPathExecutable xee = xcompiler.Compile("descendant-or-self::*");
+                XPathSelector selecc = xee.Load();
+                //selecc.ContextItem = targetnode;
+                //XdmItem cibleitem = selecc.EvaluateSingle();
+                
+
+
+                xee = xcompiler.Compile("ancestor::*");
+                selecc = xee.Load();
+                selecc.ContextItem = targetnode;
+                XdmValue ances = selecc.Evaluate();
+                
+                XmlNode xn = null;
+                XmlNode target = dock;
+                foreach (XdmItem s in ances)
+                {
+                    XmlElement ele = (XmlElement)((XdmNode)s).getUnderlyingXmlNode();
+                    xn = dock.ImportNode(ele,false);
+                    target.AppendChild(xn);
+                    target = xn;
+
+                }
+
+                if (target != null)
+                {
+                    XmlElement eli = (XmlElement)((XdmNode)targetnode).getUnderlyingXmlNode();
+                    XmlNode xm = dock.ImportNode(eli, true);
+                    XmlNode w = xm.CloneNode(false);
+                    target.AppendChild(w);
+                    XmlNodeList children =  xm.ChildNodes;
+                    foreach (XmlNode c in children)
+                    {
+
+                        XmlNode p = c.CloneNode(false);
+                        target.AppendChild(p);
+                    }
+                }
+                return dock.OuterXml;
+                /*XmlDocument dock = new XmlDocument();
                 dock.Load(@"E:\csharp\MerchantManage\MerchantManage\test\xml\Division.xml");
 
                 DocumentBuilder buil = processor.NewDocumentBuilder();
@@ -49,7 +90,7 @@ namespace MerchantManage.test
                     XmlNode xn = dock.ImportNode(xr, true);
                     xmlnode.AppendChild(xn);
                 }
-                return dock.InnerXml;
+                return dock.InnerXml;*/
             }
             return "";
         }

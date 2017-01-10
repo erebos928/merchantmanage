@@ -175,6 +175,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\HeadController.cs" />
+    <Compile Include="Models\XslTransformer.cs" />
     <Compile Include="test\Categories.cs" />
     <Compile Include="Models\Merchant.cs" />
     <Compile Include="Global.asax.cs">
@@ -219,6 +220,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="test\xml\Division.xml" />
+    <Content Include="test\xml\gabarit.xsl" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
