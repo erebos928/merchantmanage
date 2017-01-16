@@ -96,28 +96,6 @@ namespace MerchantManage.test
             }
             return "";
         }
-        String CreateFinalDoc(String s,String catid,Merchant mer)
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(s);
-            XmlElement el = doc.GetElementById(catid);
-            if (el != null)
-            {
-                XmlDocument finaldoc = new XmlDocument();
-                XmlElement cataEl = finaldoc.CreateElement("Catalogue");
-                XmlElement zoneEl = finaldoc.CreateElement("Zone");
-                XmlElement divEl = finaldoc.CreateElement("Division");
-                XmlElement logoEl = finaldoc.CreateElement("Logo");
-                XmlAttribute divAttr = finaldoc.CreateAttribute("preferredName");
-                divAttr.Value = mer.merid;
-                divEl.Attributes.Append(divAttr);
-                divEl.AppendChild(el);
-                zoneEl.AppendChild(divEl);
-                cataEl.AppendChild(zoneEl);
-                finaldoc.AppendChild(cataEl);
-                return finaldoc.InnerXml;
-            }
-            return el.InnerXml;
-        }
+
     }
 }

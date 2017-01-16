@@ -12,6 +12,8 @@ namespace MerchantManage.test
 
         public void Add(Merchant mer)
         {
+            if (repository.ContainsKey(mer.merid))
+                repository.Remove(mer.merid);
             repository.Add(mer.merid, mer);
         }
 

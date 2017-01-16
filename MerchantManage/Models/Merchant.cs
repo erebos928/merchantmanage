@@ -13,6 +13,7 @@ namespace MerchantManage.Models
         public String password { get; set; }
         public String logo { get; set; }
         public List<String> parts { get; set; }
+        public String XsltTemplate { get; set; }
         String path = "";
         public String Path { get { return path; } set { path = value; } }
         public Merchant(string merid, string uri)
@@ -29,5 +30,6 @@ namespace MerchantManage.Models
         {
             parts.Add(part);
         }
+        
     }
 }

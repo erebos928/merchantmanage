@@ -1,25 +1,24 @@
-﻿
-@{
+﻿@model MerchantManage.Models.Merchant
+<div class="row">
+    <div class="col-md-8">
 
-    Layout = null;
-
-}
-@model MerchantManage.Models.Merchant
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>SearchResult</title>
-</head>
-<body>
-    <div> 
-        <table border="1">
+<form name="mers" method="post">
+        <table class="table">
             <tr><td>Merchant Id</td><td>URI</td><td>Logo</td><td>User name</td></tr>
-            @foreach (var mer in ViewBag.Results){
-            <tr><td>@mer.merid</td><td>@mer.uri</td><td>@mer.logo</td><td>@mer.username</td></tr>
+
+            @foreach (var mer in ViewBag.Results)
+            {
+
+                <tr><td><div class="radio"><label><input type="radio" class="radio" name="merid" value="@mer.merid">@mer.merid</label></div></td><td>@mer.uri
+        </td><td>@mer.logo</td><td>@mer.username</td></tr>
+
             }
+        <tr><td><button type="submit" class="btn btn-default" onclick="mers.action = 'DeleteMerchant'; mers.submit();">Delete</button></td>
+            <td><button type="submit" class="btn btn-default" onclick="mers.action = 'AddMerchant'; mers.submit();">Edit</button></td>
+            </tr>    
+
         </table>
+    </form>
+        </div>
+
     </div>
-</body>
-</html>

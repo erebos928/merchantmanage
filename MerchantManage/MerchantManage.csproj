@@ -175,6 +175,8 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\HeadController.cs" />
+    <Compile Include="Models\Basket.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\XslTransformer.cs" />
     <Compile Include="test\Categories.cs" />
     <Compile Include="Models\Merchant.cs" />
@@ -258,7 +260,8 @@
     <Content Include="Views\Admin\SearchResult.cshtml" />
     <Content Include="Views\Admin\Addition.cshtml" />
     <Content Include="Views\Admin\SearchPage.cshtml" />
-    <Content Include="Views\Admin\AddPage.cshtml" />
+    <Content Include="Views\Admin\AddMerchant.cshtml" />
+    <Content Include="Views\Admin\Main.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

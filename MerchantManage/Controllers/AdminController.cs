@@ -15,13 +15,20 @@ namespace MerchantManage.Controllers
         {
             return View("Addition");
         }
+        [Authorize]
         public ActionResult AddMerchant()
         {
             MerchantManagerFactory merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
             String merid = Request.Form["merid"];
             if (merid == null)
-                return View("AddPage");
+                return View();
+            Merchant oldMerchant = merchantManagerFactory.CreateMerchantManager().FindById(merid);
             String uri = Request.Form["uri"];
+            if ((oldMerchant != null)&&(uri == null))
+            {
+                return View(oldMerchant);
+            }
+            
             Merchant merchant = new Merchant(merid, uri);
             String username = Request.Form["username"];
             String password = Request.Form["password"];
@@ -29,6 +36,8 @@ namespace MerchantManage.Controllers
             merchant.username = username;
             merchant.password = password;
             merchant.logo = logo;
+            merchant.description = Request.Form["description"];
+            merchant.XsltTemplate = Request.Unvalidated.Form["XsltTemplate"];
             Save(merchant);
             ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
             return View("SearchResult");
@@ -44,6 +53,16 @@ namespace MerchantManage.Controllers
             if (mer != null)
                 lst.Add(mer);
             ViewBag.Results = lst; 
+            return View("SearchResult");
+        }
+        public ActionResult DeleteMerchant()
+        {
+            MerchantManagerFactory merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
+            String str = Request.Form["merid"];
+            if (str == null)
+                return View("SearchPage");
+            merchantManagerFactory.CreateMerchantManager().Remove(str);
+            ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
             return View("SearchResult");
         }
         private void Save(Merchant merchant)
@@ -65,6 +84,10 @@ namespace MerchantManage.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        public ActionResult Main()
+        {
             return View();
         }
     }

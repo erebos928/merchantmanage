@@ -8,7 +8,7 @@
           <Category id="1">
             <Category id="1.1">
               <Category id="1.1.2" preferredName="Congelateur">
-                <Item>
+                <Item id="h925">
                   <Feature id="f.1">3.5 cu. ft. Arctic King freezer</Feature>
                   <!-- Title -->
                   <Feature id="f.4">279.89</Feature>
@@ -25,7 +25,7 @@
                   <!-- description -->
                   <Image>http://i5.walmartimages.ca/images/Large/402/381/999999-81308402381.jpg</Image>
                 </Item>
-                <Item>
+                <Item id="h912">
                   <Feature id="f.1">Diplomat 3.5 cu.ft Compact Chest Freezer</Feature>
                   <!-- Title -->
                   <Feature id="f.4">199.97</Feature>
@@ -44,7 +44,7 @@
                 </Item>
               </Category>
               <Category id="1.1.1">
-                <Item>
+                <Item id="c43">
                   <Feature id="f.1">Danby Portable Dishwasher</Feature>
                   <!-- Title -->
                   <Feature id="f.4">329.97</Feature>
@@ -66,7 +66,7 @@
             </Category>
             <Category id="1.2">
               <Category id="1.2.1">
-                <Item>
+                <Item id="k97">
                   <Feature id="f.1">Tassimo 51 oz (1.5 liter) Single Cup Home Brewing System-T20- TAS2002UC8</Feature>
                   <!-- Title -->
                   <Feature id="f.4">60</Feature>
@@ -83,7 +83,7 @@
                   <!-- description -->
                   <Image>http://i5.walmartimages.ca/images/Large/016/317/1016317.jpg</Image>
                 </Item>
-                <Item>
+                <Item id="p967">
                   <Feature id="f.1">Black &amp; Decker 12- Cup Single-Serve Coffeemaker- CM618C</Feature>
                   <!-- Title -->
                   <Feature id="f.4">21.96</Feature>
@@ -102,7 +102,7 @@
                 </Item>
               </Category>
               <Category id="1.2.2">
-                <Item>
+                <Item id="s3">
                   <Feature id="f.1">Panasonic 1.3 cu.ft. Countertop Microwave Oven</Feature>
                   <!-- Title -->
                   <Feature id="f.4">139.97</Feature>
@@ -117,7 +117,7 @@
                   <!-- weight -->
                   <Image>http://i5.walmartimages.ca/images/Large/267/893/999999-885170267893.jpg</Image>
                 </Item>
-                <Item>
+                <Item id="q19">
                   <Feature id="f.1">LG 1.5 cu.ft. Countertop Microwave</Feature>
                   <!-- Title -->
                   <Feature id="f.4">199.97</Feature>
@@ -139,7 +139,7 @@
           <Category id="2">
             <Category id="2.1">
               <!--Men-->
-              <Item>
+              <Item id="qn87">
                 <Feature id="f.1">Marvel Men's Sleep Pant</Feature>
                 <!-- Title -->
                 <Feature id="f.4">7</Feature>
@@ -157,7 +157,7 @@
                 <Image>http://i5.walmartimages.ca/images/Large/041/9_1/999999-686216160419_1.jpg</Image>
 
               </Item>
-              <Item>
+              <Item id="rs345">
                 <Feature id="f.1">Stanfield's Men's Essentials Athletic Shirt, Pack of 2</Feature>
                 <!-- Title -->
                 <Feature id="f.4">5.49-10.99</Feature>
@@ -180,7 +180,7 @@
               <!--women-->
               <Category id="2.2.1">
                 <!--coats-->
-                <Item>
+                <Item id="45632">
                   <Feature id="f.1">George Women’s Down Blend Parka</Feature>
                   <!-- Title -->
                   <Feature id="f.4">41</Feature>
@@ -196,7 +196,7 @@
                   <!-- description -->
                   <Image>http://i5.walmartimages.ca/images/Large/004/001/889565004001.jpg</Image>
                 </Item>
-                <Item>
+                <Item id="81255">
                   <Feature id="f.1">Canadiana Ladies' Down-Blend Bomber Jacket</Feature>
                   <!-- Title -->
                   <Feature id="f.4">99.97</Feature>
@@ -219,7 +219,7 @@
             <Category id="2.3">
               <Category id="2.3.1">
                 <Category id="2.3.1.1">
-                  <Item>
+                  <Item id="w09">
                     <Feature id="f.1">Genuine Dickies Boy’s Classic Fit Double Knee Twill Pant</Feature>
                     <!-- Title -->
                     <Feature id="f.4">22</Feature>
