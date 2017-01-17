@@ -49,6 +49,22 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+          $(document).ready(updateCount());
+
+          function updateCount(){
+          $(document).ready(
+          function(){
+          $("#articlecount").load("/Head/ArticleCount");})
+          }
+          function addToCart(itemId){
+          spanid = "#label-"+itemId;
+          $.get("/Head/AddToCart/"+itemId,function(data, status){
+          $(spanid).text(data);
+          updateCount();
+          });
+          }
+        </script>
       </head>
       <body>
         <div class="container">
@@ -59,6 +75,12 @@
               </a>
               <br></br>
               <xsl:value-of select="@preferredName"/>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4 text-right">
+              <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-shopping-cart"></span>Shopping Cart <span class="badge" id="articlecount"></span>
+              </button>
             </div>
           </div>
         </div>
@@ -79,64 +101,126 @@
         <hr></hr>
         <div class="container">
           <div class="row">
-<ul class="pagination">            
             <xsl:apply-templates select="./Division/Category"></xsl:apply-templates>
-            </ul>
+
           </div>
         </div>
       </body>
     </html>
   </xsl:template>
   <xsl:template match="Category">
-    <xsl:choose>
-      <xsl:when test="@preferredName">
-        <li>
-          <a	href="?currentnode={@id}">
-            <xsl:value-of select="@preferredName"/>
-          </a>
-        </li>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:variable name="identifier" select="attribute::id"/>
-        <li>
-          <a href="?currentnode={@id}">
-            <xsl:value-of select="$cats/entry[@key=$identifier]"></xsl:value-of>
-          </a>
-        </li>
-      </xsl:otherwise>
-    </xsl:choose>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <xsl:choose>
+            <xsl:when test="@preferredName">
+              <a	href="?currentnode={@id}">
+                <xsl:value-of select="@preferredName"/>
+              </a>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:variable name="identifier" select="attribute::id"/>
+              <a href="?currentnode={@id}">
+                <xsl:value-of select="$cats/entry[@key=$identifier]"></xsl:value-of>
+              </a>
+            </xsl:otherwise>
+          </xsl:choose>
+        </div>
+      </div>
+    </div>
+    <hr></hr>
     <xsl:apply-templates></xsl:apply-templates>
   </xsl:template>
   <xsl:template match="Item">
+    <xsl:variable name="identifiant" select="attribute::id"></xsl:variable>
     <div class="col-md-4">
-      <table>
-        <tbody>
-         <xsl:for-each select="Feature">
-            <xsl:variable name="fid" select="attribute::id"/>
-            <tr>
-              <td>
-                <xsl:choose>
-                  <xsl:when test="@preferredName">
-                    <xsl:value-of select="@preferredName"/>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:value-of select="$feats/entry[@key=$fid]"/>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </td>
-              <td>
-                <xsl:value-of  select="./text()"></xsl:value-of>
-              </td>
-            </tr>
+      <a data-toggle="modal" data-target="#modal{@id}">Add to carte</a>
+      <!--modal-->
+      <div class="modal fade" id="modal{@id}" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"></button>
+              <h4 class="modal-title">Adding the item to cart</h4>
+            </div>
+            <div class="modal-body">
+              <p>
+                <xsl:value-of select="./Feature[@id='f.1']"></xsl:value-of>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <span class="label label-default" id="label-{@id}"></span>
+              <a onclick="addToCart('{@id}')" class="btn btn-default" role="button">Add to cart</a>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        $("#modal<xsl:value-of select='@id'></xsl:value-of>").on('hidden.bs.modal', function () {
+        $("#label-<xsl:value-of select='@id'></xsl:value-of>").text("");
+
+        });
+      </script>
+
+      <!--modal end-->
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <xsl:for-each select="Feature">
+            <xsl:if test="position() eq 1">
+              <!-- for first feature-->
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <!-- inserting value of feature-->
+                  <xsl:variable name="fid" select="attribute::id"/>
+                  <xsl:choose>
+                    <xsl:when test="@preferredName">
+                      <a data-toggle="collapse" href="#col-{$identifiant}">
+                        <xsl:value-of select="@preferredName"/>
+                      </a>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <a data-toggle="collapse" href="#col-{$identifiant}">
+                        <xsl:value-of select="$feats/entry[@key=$fid]"/>
+                      </a>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                  <a data-toggle="collapse" href="#col-{$identifiant}">
+                    <xsl:value-of  select="./text()"></xsl:value-of>
+                  </a>
+                </h4>
+              </div>
+
+              <!-- end of inserting value of feature-->
+              <!-- end of inserting first feature-->
+            </xsl:if>
+            <!-- else if features other than first one-->
           </xsl:for-each>
-     
-         <xsl:for-each select="Image">
-			<tr>
-				<td><img src="{./text()}" alt=""></img></td><td></td>
-			</tr>
+          <div id="col-{$identifiant}" class="panel-collapse collapse">
+            <ul class="list-group">
+              <xsl:for-each select="Feature">
+                <xsl:variable name="fid" select="attribute::id"/>
+                <li class="list-group-item">
+                  <xsl:choose>
+                    <xsl:when test="@preferredName">
+                      <xsl:value-of select="@preferredName"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="$feats/entry[@key=$fid]"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                  <xsl:value-of  select="./text()"/>
+                </li>
+              </xsl:for-each>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <xsl:for-each select="Image">
+          <img src="{./text()}" alt="" width="170" height="200"></img>
         </xsl:for-each>
-        </tbody>
-      </table>
+      </div>
     </div>
   </xsl:template>
 
