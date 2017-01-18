@@ -12,6 +12,7 @@ namespace MerchantManage.Controllers
         [Route("Head/Explore/{merchant}")]
         public ActionResult Explore(String merchant)
         {
+            asdhjgkjh
             MerchantManagerFactory MManagerFact = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
             MerchantManager manager = MManagerFact.CreateMerchantManager();
             Merchant mer = manager.ResolveMerchant(Request);
