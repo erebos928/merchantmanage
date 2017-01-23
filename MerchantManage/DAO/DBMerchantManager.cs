@@ -13,14 +13,11 @@ namespace MerchantManage.DAO
     {
 
         Dictionary<String, Merchant> repository = new Dictionary<string, Merchant>();
-        public void Edit(Merchant mer)
-        {
 
-        }
+       
         //save in DB
         public void Add(Merchant mer)
         {
-           // TestConnection();
             SqlConnection connection = new SqlConnection(MvcApplication.ConnString1);
 
             SqlCommand command =
@@ -102,8 +99,33 @@ namespace MerchantManage.DAO
             return null;
         }
 
-       
-      
+        public void Update(Merchant mer)
+        {
+            SqlConnection connection = new SqlConnection(MvcApplication.ConnString1);
+            SqlCommand command =
+                    new SqlCommand("UPDATE TBMERCHANT " +
+                                    " SET MERCHANTID=@pid AND " +
+                                    " MERCHANTNAME=@pnom  AND " +
+                                    "MERCHANTURI=@puri AND " +
+                                    "DESCRIPTION=pdes@ AND " +
+                                    "USERNAME=@puser AND " +
+                                    "PASSWORD=@ppass AND " +
+                                    "LOGO=@plogo AND " +
+                                    "XSLTTEMPLATE=@pxslt");
+            command.Parameters.AddWithValue("@pid", mer.merid);
+            command.Parameters.AddWithValue("@pnom", mer.mername);
+            command.Parameters.AddWithValue("@puri", mer.uri);
+            command.Parameters.AddWithValue("@pdes", mer.description);
+            command.Parameters.AddWithValue("@puser", mer.username);
+            command.Parameters.AddWithValue("@ppass", mer.password);
+            command.Parameters.AddWithValue("@plogo", mer.logo);
+            command.Parameters.AddWithValue("@pxslt", mer.XsltTemplate);
+            connection.Open();
+            command.Connection = connection;
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
 
         public Merchant ResolveMerchant(HttpRequestBase req)
         {

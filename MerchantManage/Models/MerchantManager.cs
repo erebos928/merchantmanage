@@ -10,6 +10,7 @@ namespace MerchantManage.Models
     {
         void Add(Merchant mer);
         void Remove(String id);
+        void Update(Merchant mer);
         Merchant FindById(String id);
         Merchant FindByName(String name);
         List<Merchant> GetAll();

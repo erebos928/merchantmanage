@@ -37,13 +37,39 @@ namespace MerchantManage.Controllers
                 Merchant mer = merchantManagerFactory.CreateMerchantManager().FindById(str);
                 if(mer != null)
                 {
-                    ViewBag.Results = mer;
+                    ViewBag.merid = mer.merid;
+                    ViewBag.mername = mer.mername;
+                    ViewBag.username = mer.username;
+                    ViewBag.password = mer.password;
+                    ViewBag.logo = mer.logo;
+                    ViewBag.description = mer.description;
+                    ViewBag.XsltTemplate = mer.XsltTemplate;
+                    ViewBag.uri = mer.uri;
                     return View();
                 }
-                     
-                //merchantManagerFactory.CreateMerchantManager().Edit(str);
             }
             ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
+            return View("GestionMerchant");
+        }
+        //update a merchant
+        public ActionResult UpdateMerchant()
+        {
+            Merchant merchant = new Merchant();
+            String mername = Request.Form["mername"];
+            String username = Request.Form["username"];
+            String password = Request.Form["password"];
+            String logo = Request.Form["logo"];
+            merchant.mername = mername;
+            merchant.username = username;
+            merchant.password = password;
+            merchant.logo = logo;
+            merchant.description = Request.Form["description"];
+            merchant.XsltTemplate = Request.Unvalidated.Form["XsltTemplate"];
+            MerchantManagerFactory merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
+            MerchantManager manager = merchantManagerFactory.CreateMerchantManager();
+            manager.Update(merchant);
+            ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
+
             return View("GestionMerchant");
         }
         //add a merchant

@@ -63,5 +63,9 @@ namespace MerchantManage.test
             }
             return null;
         }
+        public void Update(Merchant mer)
+        {
+
+        }
     }
 }
