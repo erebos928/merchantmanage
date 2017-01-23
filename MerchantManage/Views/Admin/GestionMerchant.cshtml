@@ -1,0 +1,82 @@
+﻿@using MerchantManage.Models
+@model MeridReportModel
+
+@{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html >
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <div>
+        welcome to GestionMerchant
+        <table class="table table-striped table-hover table-responsive" >
+            <tr>
+                <th> Merchant ID </th>
+                <th> Merchant Name </th>
+                <th> URI </th>
+                <th> UserName </th>
+                <th> Password </th>
+                <th> Logo </th>
+                <th> Description </th>
+                <th> XsltTemplate </th>
+                
+            </tr>
+            @if (ViewBag.Results != null)
+            {
+                foreach (var mer in ViewBag.Results)
+                {
+                    <tr>
+                        <td> @mer.merid </td>
+                        <td> @mer.mername </td>
+                        <td> @mer.uri </td>
+                        <td> @mer.username </td>
+                        <td> @mer.password 1</td>
+                        <td> @mer.logo </td>
+                        <td> @mer.description </td>
+                        <td> @mer.XsltTemplate </td>
+                        <td><input id='btndelete' type="button" value="Delete" /></td>
+                        <td><input id='btnedit' type="button" value="Edit" /></td>
+
+
+                            @*@using (Html.BeginForm("GetMerid", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                               @:merid : mer.merid
+                               
+                            }*@
+                            
+
+                    </tr>
+                }
+            }
+            
+        </table>
+        <script type="text/javascript">
+            $(document).ready(function () {
+              $('#btnajouter').click(function (e)
+              {
+                    location.href = '@Url.Content("~/Admin/AddMerchant/")';
+              });
+                $('#btndelete').click(function (e) {
+                    location.href = '@Url.Content("~/Admin/DeleteMerchant/")';
+                });
+                $('#btnedit').click(function (e) {
+                    location.href = '@Url.Content("~/Admin/EditMerchant/")';
+                });
+            });
+        </script>
+        
+        //change below input tag
+        <input id='btnajouter' type="button" value="Ajouter Merchant" />
+        
+    </div>
+</body>
+</html>

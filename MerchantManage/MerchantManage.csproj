@@ -177,8 +177,11 @@
     <Compile Include="Controllers\HeadController.cs" />
     <Compile Include="DAO\DBMerchantManager.cs" />
     <Compile Include="DAO\DBMerchantManagerFactory.cs" />
+    <Compile Include="DAO\DBServiceClientFactory.cs" />
+    <Compile Include="DAO\DBServiceClient.cs" />
     <Compile Include="Models\Basket.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\MeridReportModel.cs" />
     <Compile Include="Models\XslTransformer.cs" />
     <Compile Include="test\Categories.cs" />
     <Compile Include="Models\Merchant.cs" />
@@ -235,7 +238,9 @@
     </Content>
     <Content Include="test\xml\Division.xml" />
     <Content Include="test\xml\gabarit.xsl" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -274,7 +279,9 @@
     <Content Include="Views\Admin\SearchPage.cshtml" />
     <Content Include="Views\Admin\AddMerchant.cshtml" />
     <Content Include="Views\Admin\Main.cshtml" />
-    <Content Include="Views\Admin\GestionMerchant.aspx" />
+    <Content Include="Views\Admin\EditMerchant.cshtml" />
+    <None Include="Views\Admin\GestionMerchant.cshtml" />
+    <Content Include="Views\Admin\ViewPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
