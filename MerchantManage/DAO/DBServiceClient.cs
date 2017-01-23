@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
 
@@ -12,7 +13,13 @@ namespace MerchantManage.DAO
 {
     public class DBServiceClient : ServiceClient
     {
-        public string SendRequest(Merchant mer,String currentNode)
+        public Task<string> SendRequest(Merchant mer, String currentNode)
+        {
+            String s = Send(mer, currentNode);
+            return new Task<String>(()=>s);
+            
+        }
+        public string Send(Merchant mer,String currentNode)
         {
             Processor processor = new Processor();
             DocumentBuilder docBuilder = processor.NewDocumentBuilder();
