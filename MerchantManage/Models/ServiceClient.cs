@@ -8,6 +8,6 @@ namespace MerchantManage.Models
 {
     public interface ServiceClient
     {
-        String SendRequest(Merchant mer,String currentNode);
+        Task<String> SendRequest(Merchant mer,String currentNode);
     }
 }

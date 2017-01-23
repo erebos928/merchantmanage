@@ -17,7 +17,7 @@ namespace MerchantManage
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             System.Web.HttpContext.Current.Application["merchantManagerFactory"] = new test.MockMerchantManagerFactory();
-            System.Web.HttpContext.Current.Application["serviceClientFactory"] = new test.MockServiceClientFactory();
+            System.Web.HttpContext.Current.Application["serviceClientFactory"] = new transport.RealServiceClientFactory();
 
         }
     }
