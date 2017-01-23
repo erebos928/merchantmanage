@@ -11,59 +11,70 @@
                 <div class="form-group">
                     @Html.LabelFor(m => m.merid, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                          @Html.TextBoxFor(m => m.merid, new { @Value = "@(ViewBag.Results.merid)" })
+                          @Html.TextBoxFor(m => m.merid,null, new { @Value =ViewBag.merid })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.mername, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.mername, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.mername, null, new { @Value = ViewBag.mername })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.username, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.username, null, new { @Value = ViewBag.username })
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.password, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.PasswordFor(m => m.password, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.password, null, new { @Value = ViewBag.password })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.uri, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.uri, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.uri, null, new { @Value = ViewBag.uri })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.logo, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.logo, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.logo, null, new { @Value = ViewBag.logo })
                     </div>
                 </div>
                 <div class="form-group"> 
                     @Html.LabelFor(m => m.description, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextAreaFor(m => m.description, new { @class = "form-control" })
+                        @Html.TextAreaFor(m => m.description, new { @Value = ViewBag.merid })
                     </div>
                 </div> 
                 <div class="form-group">
                     @Html.LabelFor(m => m.XsltTemplate, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextAreaFor(m => m.XsltTemplate, new { @class = "form-control" })
+                        @Html.TextAreaFor(m => m.XsltTemplate,new { @Value = ViewBag.XsltTemplate })
                     </div>
                 </div>
-
-                    <div class="form-group" >
+                @*<form action="Admin/UpdateMerchant" method="get" >
+                    <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Apply" class="btn btn-default" />
+                            <input type="submit" value="Apply" class="btn btn-default" id='btnupdate' />
                         </div>
                     </div>
-                    
+                </form>*@
+                <script type="text/javascript">
+                     $(document).ready(function () {
+                         $('#btnupdate').click(function (e)
+                      {
+                            location.href = '@Url.Content("~/Admin/UpdateMerchant/")';
+                      });
+
+                     });
+                </script>
+                <input id='btnupdate' type="button" value="Apply" class="btn btn-default" name="btnupdate" />
+                
             }
             </section>
 </div>

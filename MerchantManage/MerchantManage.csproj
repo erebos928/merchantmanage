@@ -181,7 +181,6 @@
     <Compile Include="Models\Basket.cs" />
     <Compile Include="Models\Feature.cs" />
     <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\MeridReportModel.cs" />
     <Compile Include="Models\XslTransformer.cs" />
     <Compile Include="test\Categories.cs" />
     <Compile Include="Models\Merchant.cs" />

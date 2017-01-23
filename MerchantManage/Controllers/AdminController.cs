@@ -16,7 +16,7 @@ namespace MerchantManage.Controllers
         //{
         //    return View("Addition");
         //}
-        [Authorize]
+       // [Authorize]
         public ActionResult GestionMerchant()
         {
             merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
@@ -26,19 +26,19 @@ namespace MerchantManage.Controllers
             return View();
         }
         //Edit a merchant 
-        public ActionResult EditMerchant()
+        public ActionResult EditMerchant(int id)
         {
             merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
 
-            String str = "100";
-            //  str = GetMerid().ToString();
+            String str;
+            str= id.ToString();
             if (str != null)
             {
                 Merchant mer = merchantManagerFactory.CreateMerchantManager().FindById(str);
                 if(mer != null)
                 {
                     ViewBag.Results = mer;
-                    return View();
+                    return View("GestionMerchant");
                 }
                      
                 //merchantManagerFactory.CreateMerchantManager().Edit(str);
@@ -77,22 +77,14 @@ namespace MerchantManage.Controllers
            
             return View("GestionMerchant");
         }
-        public ActionResult GetMerid()
-        {
-            return View(new MeridReportModel());
-        }
-        [HttpPost]
-        public ActionResult GetMerid(MeridReportModel meridmodel)
-        {
-            return Content(meridmodel.merid);
-        }
+        
         //call Remove for delete a merchant
-        public ActionResult DeleteMerchant()
+        public ActionResult DeleteMerchant(string id)
         {
             merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
 
             String str = "100";
-            //        str = GetMerid().ToString();
+            str = id;
             if (str != null)
             {
                 merchantManagerFactory.CreateMerchantManager().Remove(str);
