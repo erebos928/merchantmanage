@@ -56,6 +56,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -180,8 +181,8 @@
     <Compile Include="DAO\DBServiceClientFactory.cs" />
     <Compile Include="DAO\DBServiceClient.cs" />
     <Compile Include="Models\Basket.cs" />
+    <Compile Include="Models\Feature.cs" />
     <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\MeridReportModel.cs" />
     <Compile Include="Models\XslTransformer.cs" />
     <Compile Include="test\Categories.cs" />
     <Compile Include="Models\Merchant.cs" />
@@ -201,6 +202,8 @@
     <Compile Include="test\MockMerchantManagerFactory.cs" />
     <Compile Include="test\MockServiceClient.cs" />
     <Compile Include="test\MockServiceClientFactory.cs" />
+    <Compile Include="transport\RealServiceClient.cs" />
+    <Compile Include="transport\RealServiceClientFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

@@ -27,7 +27,7 @@
                 <th> Password </th>
                 <th> Logo </th>
                 <th> Description </th>
-                <th> XsltTemplate </th>
+                <th> Action </th>
                 
             </tr>
             @if (ViewBag.Results != null)
@@ -42,17 +42,11 @@
                         <td> @mer.password 1</td>
                         <td> @mer.logo </td>
                         <td> @mer.description </td>
-                        <td> @mer.XsltTemplate </td>
-                        <td><input id='btndelete' type="button" value="Delete" /></td>
-                        <td><input id='btnedit' type="button" value="Edit" /></td>
-
-
-                            @*@using (Html.BeginForm("GetMerid", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                            {
-                               @:merid : mer.merid
-                               
-                            }*@
-                            
+                        <td>
+                            @Html.ActionLink("Edit", "/EditMerchant", new { id = mer.merid }) |
+                            @Html.ActionLink("Details", "/DetailsMerchant", new { id = mer.merid }) |
+                            @Html.ActionLink("Delete", "/DeleteMerchant", new { id = mer.merid })
+                        </td>
 
                     </tr>
                 }
@@ -65,12 +59,12 @@
               {
                     location.href = '@Url.Content("~/Admin/AddMerchant/")';
               });
-                $('#btndelete').click(function (e) {
+                @*$('#btndelete').click(function (e) {
                     location.href = '@Url.Content("~/Admin/DeleteMerchant/")';
                 });
                 $('#btnedit').click(function (e) {
                     location.href = '@Url.Content("~/Admin/EditMerchant/")';
-                });
+                });*@
             });
         </script>
         

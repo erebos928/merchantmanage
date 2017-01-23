@@ -19,6 +19,8 @@ namespace MerchantManage.Models
             XsltCompiler compiler = processor.NewXsltCompiler();
             //FileStream stream = new FileStream(@"E:\csharp\MerchantManage\MerchantManage\test\xml\gabarit3.xsl", FileMode.Open);
             MemoryStream mstream = new MemoryStream();
+            if (String.IsNullOrEmpty(mer.XsltTemplate))
+                return source;
             byte[] template = System.Text.Encoding.UTF8.GetBytes(mer.XsltTemplate);
             mstream.Write(template,0,template.Length);
             mstream.Position = 0;
