@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    welcome to GestionMerchant
+    <table class="table table-striped table-hover table-responsive">
+        <tr>
+            <th> Merchant ID </th>
+            <th> Merchant Name </th>
+            <th> URI </th>
+            <th> UserName </th>
+            <th> Password </th>
+            <th> Logo </th>
+            <th> Description </th>
+            <th> XsltTemplate </th>
+
+        </tr>
+        @if (ViewBag.Results != null)
+            {
+                foreach (var mer in ViewBag.Results)
+                {
+                <tr>
+                    <td> @mer.merid </td>
+                    <td> @mer.mername </td>
+                    <td> @mer.uri </td>
+                    <td> @mer.username </td>
+                    <td> @mer.password 1</td>
+                    <td> @mer.logo </td> 
+                    <td> @mer.description </td>
+                    <td> @mer.XsltTemplate </td>
+                    <td>
+                        @{
+                            // ViewData["merid"] = mer.merid;
+                            ViewBag.merid = mer.merid;
+                        }
+
+                        <input id='btndelete' type="submit" value="Delete" />
+                    </td>
+
+                </tr>
+                                }
+                            }
+
+    </table>
+    <script type="text/javascript">
+            $(document).ready(function () {
+              $('#btnajouter').click(function (e)
+              {
+                    location.href = '@Url.Content("~/Admin/AddMerchant/")';
+              });
+                $('#btndelete').click(function (e) {
+                    location.href = '@Url.Content("~/Admin/DeleteMerchant/")';
+                });
+            });
+    </script>
+
+    //change below input tag
+    <input id='btnajouter' type="button" value="Ajouter Merchant" />
+
+</div>
+
