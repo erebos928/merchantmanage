@@ -30,9 +30,11 @@ namespace MerchantManage.DAO
             command.Parameters.AddWithValue("@puser", mer.username);
             command.Parameters.AddWithValue("@ppass", mer.password);
             command.Parameters.AddWithValue("@plogo", mer.logo);
-            command.Parameters.AddWithValue("@pxslt", mer.XsltTemplate);
-            connection.Open();
+            command.Parameters.Add("@pxslt", SqlDbType.VarChar,-1).Value = mer.XsltTemplate;
+
             command.Connection = connection;
+            connection.Open();
+            
             command.ExecuteNonQuery();
             connection.Close();
         }
