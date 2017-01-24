@@ -57,24 +57,13 @@
                         @Html.TextAreaFor(m => m.XsltTemplate,new { @Value = ViewBag.XsltTemplate })
                     </div>
                 </div>
-                @*<form action="Admin/UpdateMerchant" method="get" >
-                    <div class="form-group">
+
+                    <div class="form-group" >
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Apply" class="btn btn-default" id='btnupdate' />
+                            <input type="submit" value="Apply" class="btn btn-default" />
                         </div>
                     </div>
-                </form>*@
-                <script type="text/javascript">
-                     $(document).ready(function () {
-                         $('#btnupdate').click(function (e)
-                      {
-                            location.href = '@Url.Content("~/Admin/UpdateMerchant/")';
-                      });
-
-                     });
-                </script>
-                <input id='btnupdate' type="button" value="Apply" class="btn btn-default" name="btnupdate" />
-                
+                    
             }
             </section>
 </div>
