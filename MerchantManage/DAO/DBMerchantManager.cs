@@ -35,10 +35,6 @@ namespace MerchantManage.DAO
             command.Connection = connection;
             command.ExecuteNonQuery();
             connection.Close();
-
-            //if (repository.ContainsKey(mer.merid))
-            //    repository.Remove(mer.merid);
-            //repository.Add(mer.merid, mer);
         }
         //Read all records of tbmerchant
         public List<Merchant> GetAll()
@@ -104,15 +100,14 @@ namespace MerchantManage.DAO
             SqlConnection connection = new SqlConnection(MvcApplication.ConnString1);
             SqlCommand command =
                     new SqlCommand("UPDATE TBMERCHANT " +
-                                    " SET MERCHANTID=@pid AND " +
-                                    " MERCHANTNAME=@pnom  AND " +
-                                    "MERCHANTURI=@puri AND " +
-                                    "DESCRIPTION=pdes@ AND " +
-                                    "USERNAME=@puser AND " +
-                                    "PASSWORD=@ppass AND " +
-                                    "LOGO=@plogo AND " +
-                                    "XSLTTEMPLATE=@pxslt");
-            command.Parameters.AddWithValue("@pid", mer.merid);
+                                    "SET MERCHANTNAME=@pnom  , " +
+                                    "MERCHANTURI=@puri , " +
+                                    "DESCRIPTION=@pdes , " +
+                                    "USERNAME=@puser , " +
+                                    "PASSWORD=@ppass , " +
+                                    "LOGO=@plogo , " +
+                                    "XSLTTEMPLATE=@pxslt where MERCHANTID= @pid");
+            
             command.Parameters.AddWithValue("@pnom", mer.mername);
             command.Parameters.AddWithValue("@puri", mer.uri);
             command.Parameters.AddWithValue("@pdes", mer.description);
@@ -120,6 +115,7 @@ namespace MerchantManage.DAO
             command.Parameters.AddWithValue("@ppass", mer.password);
             command.Parameters.AddWithValue("@plogo", mer.logo);
             command.Parameters.AddWithValue("@pxslt", mer.XsltTemplate);
+            command.Parameters.AddWithValue("@pid", mer.merid);
             connection.Open();
             command.Connection = connection;
             command.ExecuteNonQuery();

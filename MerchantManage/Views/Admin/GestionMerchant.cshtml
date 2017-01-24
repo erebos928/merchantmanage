@@ -1,11 +1,8 @@
 ﻿@using MerchantManage.Models
-@model MeridReportModel
-
 @{
         Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
-
 <html >
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -17,7 +14,6 @@
 </head>
 <body>
     <div>
-        welcome to GestionMerchant
         <table class="table table-striped table-hover table-responsive" >
             <tr>
                 <th> Merchant ID </th>
@@ -44,7 +40,6 @@
                         <td> @mer.description </td>
                         <td>
                             @Html.ActionLink("Edit", "/EditMerchant", new { id = mer.merid }) |
-                            @Html.ActionLink("Details", "/DetailsMerchant", new { id = mer.merid }) |
                             @Html.ActionLink("Delete", "/DeleteMerchant", new { id = mer.merid })
                         </td>
 
@@ -59,17 +54,9 @@
               {
                     location.href = '@Url.Content("~/Admin/AddMerchant/")';
               });
-                @*$('#btndelete').click(function (e) {
-                    location.href = '@Url.Content("~/Admin/DeleteMerchant/")';
-                });
-                $('#btnedit').click(function (e) {
-                    location.href = '@Url.Content("~/Admin/EditMerchant/")';
-                });*@
             });
         </script>
-        
-        //change below input tag
-        <input id='btnajouter' type="button" value="Ajouter Merchant" />
+        <input id='btnajouter' type="button" value="Add Merchant" />
         
     </div>
 </body>
