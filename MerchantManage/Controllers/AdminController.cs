@@ -23,7 +23,7 @@ namespace MerchantManage.Controllers
 
             //Read data from table tbmerchant
             ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
-            return View("Resultat");
+            return View("Resulta2t");
         }
         //Edit a merchant 
         public ActionResult EditMerchant(int id)
