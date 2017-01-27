@@ -26,50 +26,24 @@ namespace MerchantManage.Controllers
             return View();
         }
         //Edit a merchant 
-        public ActionResult EditMerchant()
+        public ActionResult EditMerchant(int id)
         {
             merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
 
-            String str = "100";
-            //  str = GetMerid().ToString();
+            String str;
+            str= id.ToString();
             if (str != null)
             {
                 Merchant mer = merchantManagerFactory.CreateMerchantManager().FindById(str);
                 if(mer != null)
                 {
-                    ViewBag.merid = mer.merid;
-                    ViewBag.mername = mer.mername;
-                    ViewBag.username = mer.username;
-                    ViewBag.password = mer.password;
-                    ViewBag.logo = mer.logo;
-                    ViewBag.description = mer.description;
-                    ViewBag.XsltTemplate = mer.XsltTemplate;
-                    ViewBag.uri = mer.uri;
-                    return View();
+                    ViewBag.Results = mer;
+                    return View("GestionMerchant");
                 }
+                     
+                //merchantManagerFactory.CreateMerchantManager().Edit(str);
             }
             ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
-            return View("GestionMerchant");
-        }
-        //update a merchant
-        public ActionResult UpdateMerchant()
-        {
-            Merchant merchant = new Merchant();
-            String mername = Request.Form["mername"];
-            String username = Request.Form["username"];
-            String password = Request.Form["password"];
-            String logo = Request.Form["logo"];
-            merchant.mername = mername;
-            merchant.username = username;
-            merchant.password = password;
-            merchant.logo = logo;
-            merchant.description = Request.Form["description"];
-            merchant.XsltTemplate = Request.Unvalidated.Form["XsltTemplate"];
-            MerchantManagerFactory merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
-            MerchantManager manager = merchantManagerFactory.CreateMerchantManager();
-            manager.Update(merchant);
-            ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
-
             return View("GestionMerchant");
         }
         //add a merchant
@@ -103,22 +77,14 @@ namespace MerchantManage.Controllers
            
             return View("GestionMerchant");
         }
-        public ActionResult GetMerid()
-        {
-            return View(new MeridReportModel());
-        }
-        [HttpPost]
-        public ActionResult GetMerid(MeridReportModel meridmodel)
-        {
-            return Content(meridmodel.merid);
-        }
+        
         //call Remove for delete a merchant
-        public ActionResult DeleteMerchant()
+        public ActionResult DeleteMerchant(string id)
         {
             merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
 
             String str = "100";
-            //        str = GetMerid().ToString();
+            str = id;
             if (str != null)
             {
                 merchantManagerFactory.CreateMerchantManager().Remove(str);

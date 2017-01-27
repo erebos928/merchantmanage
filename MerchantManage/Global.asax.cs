@@ -33,7 +33,7 @@ namespace MerchantManage
             // System.Web.HttpContext.Current.Application["merchantManagerFactory"] = new test.MockMerchantManagerFactory();
             //  System.Web.HttpContext.Current.Application["serviceClientFactory"] = new test.MockServiceClientFactory();
               System.Web.HttpContext.Current.Application["merchantManagerFactory"] = new DAO.DBMerchantManagerFactory();
-              System.Web.HttpContext.Current.Application["serviceClientFactory"] = new DAO.DBServiceClientFactory();
+             // System.Web.HttpContext.Current.Application["serviceClientFactory"] = new DAO.DBServiceClientFactory();
         }
     }
 }

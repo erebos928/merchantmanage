@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
 
@@ -12,7 +13,13 @@ namespace MerchantManage.test
 {
     public class MockServiceClient : ServiceClient
     {
-        public string SendRequest(Merchant mer,String currentNode)
+        public Task<string> SendRequest(Merchant mer, String currentNode)
+        {
+            String m = MakeResponse(mer, currentNode);
+            Task<String> tsk = new Task<String>(() => m);
+            return tsk;
+        }
+        public string MakeResponse(Merchant mer,String currentNode)
         {
             Processor processor = new Processor();
             DocumentBuilder docBuilder = processor.NewDocumentBuilder();
@@ -74,6 +81,7 @@ namespace MerchantManage.test
                         target.AppendChild(p);
                     }
                 }
+                
                 return dock.OuterXml;
                 /*XmlDocument dock = new XmlDocument();
                 dock.Load(@"E:\csharp\MerchantManage\MerchantManage\test\xml\Division.xml");
