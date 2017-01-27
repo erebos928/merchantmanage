@@ -16,7 +16,7 @@ namespace MerchantManage.Controllers
         //{
         //    return View("Addition");
         //}
-        [Authorize]
+       // [Authorize]
         public ActionResult GestionMerchant()
         {
             merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
