@@ -12,10 +12,6 @@ namespace MerchantManage.Controllers
     {
         MerchantManagerFactory merchantManagerFactory;
 
-        //public ActionResult Index()
-        //{
-        //    return View("Addition");
-        //}
        // [Authorize]
         public ActionResult GestionMerchant()
         {
