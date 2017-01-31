@@ -55,14 +55,14 @@ namespace MerchantManage.test
                 division = parts[5];
             if (division != null)
                  merchant = FindById(division);
-            if (merchant != null)
-            {
-                for (int i = 6; i < parts.Length; i++)
-                    merchant.AddPart(parts[i]);
-                return merchant;
-            }
-            return null;
+            return merchant;
         }
+
+        public void SetMerchantId(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Merchant mer)
         {
 

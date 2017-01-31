@@ -3,9 +3,9 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions">
   <xsl:variable name="cats">
     <entry key="1">Appliances</entry>
-    <entry key="1.1">Home Appliaces</entry>
-    <entry key="1.1.1">Dishwashers</entry>
-    <entry key="1.1.2">Freezers</entry>
+    <entry key="7">Home Appliaces</entry>
+    <entry key="8">Dishwashers</entry>
+    <entry key="0">Freezers</entry>
     <entry key="1.2">Small Appliance</entry>
     <entry key="1.2.1">Coffee Makers</entry>
     <entry key="1.2.2">Microwaves</entry>
