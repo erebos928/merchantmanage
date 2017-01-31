@@ -30,19 +30,48 @@ namespace MerchantManage.Controllers
         {
             merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
 
-            String str;
-            str= id.ToString();
+            String str= id.ToString();
             if (str != null)
             {
                 Merchant mer = merchantManagerFactory.CreateMerchantManager().FindById(str);
                 if(mer != null)
                 {
-                    ViewBag.Results = mer;
-                    return View("GestionMerchant");
+                    ViewBag.merid = mer.merid;
+                    ViewBag.mername = mer.mername;
+                    ViewBag.username = mer.username;
+                    ViewBag.password = mer.password;
+                    ViewBag.logo = mer.logo;
+                    ViewBag.description = mer.description;
+                    ViewBag.XsltTemplate = mer.XsltTemplate;
+                    ViewBag.uri = mer.uri;
+
+                    return View();
                 }
-                     
-                //merchantManagerFactory.CreateMerchantManager().Edit(str);
             }
+            ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
+            return View("GestionMerchant");
+        }
+        //update a merchant
+        public ActionResult UpdateMerchant()
+        {
+            Merchant merchant = new Merchant();
+            String merid = Request.Form["merid"];
+            String mername = Request.Form["mername"];
+            String uri = Request.Form["uri"];
+            String username = Request.Form["username"];
+            String password = Request.Form["password"];
+            String logo = Request.Form["logo"];
+            merchant.merid = merid;
+            merchant.mername = mername;
+            merchant.uri = uri;
+            merchant.username = username;
+            merchant.password = password;
+            merchant.logo = logo;
+            merchant.description = Request.Form["description"];
+            merchant.XsltTemplate = Request.Unvalidated.Form["XsltTemplate"];
+            MerchantManagerFactory merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
+            MerchantManager manager = merchantManagerFactory.CreateMerchantManager();
+            manager.Update(merchant);
             ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
             return View("GestionMerchant");
         }
@@ -79,12 +108,11 @@ namespace MerchantManage.Controllers
         }
         
         //call Remove for delete a merchant
-        public ActionResult DeleteMerchant(string id)
+        public ActionResult DeleteMerchant(int id)
         {
             merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
 
-            String str = "100";
-            str = id;
+            String str = id.ToString();
             if (str != null)
             {
                 merchantManagerFactory.CreateMerchantManager().Remove(str);

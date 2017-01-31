@@ -14,14 +14,14 @@ namespace MerchantManage.Models
         public String username { get; set; }
         public String password { get; set; }
         public String logo { get; set; }
-        public List<String> parts { get; set; }
+       
         public String XsltTemplate { get; set; }
         String path = "";
         public String Path { get { return path; } set { path = value; } }
         public Merchant() {   }
         public Merchant(string merid, string uri)
         {
-            parts = new List<String>();
+           
             this.merid = merid;
             this.uri = uri;
         }
@@ -29,10 +29,7 @@ namespace MerchantManage.Models
         {
             return merid + ", " + uri;
         }
-        public void AddPart(String part)
-        {
-            parts.Add(part);
-        }
+   
 
     }
     //This context class will define the database and table

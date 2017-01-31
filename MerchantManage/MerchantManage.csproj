@@ -204,6 +204,10 @@
     <Compile Include="transport\RealServiceClientFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\certitude.mdf" />
+    <Content Include="App_Data\certitude_log.ldf">
+      <DependentUpon>certitude.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -285,7 +289,7 @@
     <Content Include="Views\Admin\ViewPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="bdd\" />
     <Folder Include="Views\Zone\" />
   </ItemGroup>
   <ItemGroup>

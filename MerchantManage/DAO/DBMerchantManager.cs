@@ -13,7 +13,7 @@ namespace MerchantManage.DAO
     {
 
         Dictionary<String, Merchant> repository = new Dictionary<string, Merchant>();
-
+        String MerId { get; set; }
        
         //save in DB
         public void Add(Merchant mer)
@@ -30,8 +30,8 @@ namespace MerchantManage.DAO
             command.Parameters.AddWithValue("@puser", mer.username);
             command.Parameters.AddWithValue("@ppass", mer.password);
             command.Parameters.AddWithValue("@plogo", mer.logo);
-            command.Parameters.Add("@pxslt", SqlDbType.VarChar,-1).Value = mer.XsltTemplate;
-
+            //command.Parameters.Add("@pxslt", SqlDbType.VarChar,-1).Value = mer.XsltTemplate;
+            command.Parameters.AddWithValue("@pxslt", mer.XsltTemplate);
             command.Connection = connection;
             connection.Open();
             
@@ -131,27 +131,13 @@ namespace MerchantManage.DAO
 
         public Merchant ResolveMerchant(HttpRequestBase req)
         {
-            String url = req.Url.ToString();
-            String[] parts = url.Split(new char[] { '/' });
-            if (parts.Length < 4)
-                return null;
-            String method = parts[3];
-            Merchant merchant = null;
-            String zone = null;
-            String division = null;
-            if (parts.Length > 4)
-                zone = parts[4];
-            if (parts.Length > 5)
-                division = parts[5];
-            if (division != null)
-                 merchant = FindById(division);
-            if (merchant != null)
-            {
-                for (int i = 6; i < parts.Length; i++)
-                    merchant.AddPart(parts[i]);
-                return merchant;
-            }
-            return null;
+            Merchant merchant = FindById(MerId);
+            return merchant;
+        }
+
+        public void SetMerchantId(string id)
+        {
+            MerId = id;
         }
     }
 }

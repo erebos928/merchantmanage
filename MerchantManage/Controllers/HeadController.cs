@@ -18,6 +18,8 @@ namespace MerchantManage.Controllers
         {
             MerchantManagerFactory MManagerFact = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
             MerchantManager manager = MManagerFact.CreateMerchantManager();
+
+            manager.SetMerchantId(merchant);
             Merchant mer = manager.ResolveMerchant(Request);
             ContentResult cont = new ContentResult();
             if (mer != null)
@@ -26,7 +28,7 @@ namespace MerchantManage.Controllers
                 ServiceClient serviceClient = serviceClientFact.GetServiceClient();
                 String curnode = Request.QueryString["currentnode"];
                 if (curnode == null)
-                    curnode = "0";
+                    curnode = "-1";
                 String response = await serviceClient.SendRequest(mer, curnode);
                 XslTransformer trans = new XslTransformer();
                 response = response.Substring(1, response.Length - 2);
