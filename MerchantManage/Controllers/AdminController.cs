@@ -12,10 +12,6 @@ namespace MerchantManage.Controllers
     {
         MerchantManagerFactory merchantManagerFactory;
 
-        //public ActionResult Index()
-        //{
-        //    return View("Addition");
-        //}
        // [Authorize]
         public ActionResult GestionMerchant()
         {
@@ -23,7 +19,7 @@ namespace MerchantManage.Controllers
 
             //Read data from table tbmerchant
             ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
-            return View();
+            return View("Resulta2t");
         }
         //Edit a merchant 
         public ActionResult EditMerchant(int id)
