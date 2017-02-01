@@ -1,6 +1,7 @@
 ﻿using MerchantManage.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
@@ -18,7 +19,8 @@ namespace MerchantManage.Controllers
         {
             MerchantManagerFactory MManagerFact = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
             MerchantManager manager = MManagerFact.CreateMerchantManager();
-
+            if (merchant.Equals("all"))
+                return Intro();
             manager.SetMerchantId(merchant);
             Merchant mer = manager.ResolveMerchant(Request);
             ContentResult cont = new ContentResult();
@@ -34,15 +36,6 @@ namespace MerchantManage.Controllers
                 response = response.Substring(1, response.Length - 2);
                 response = response.Replace("\\","");
                 response = Encoding.UTF8.GetString(Convert.FromBase64String(response));
-                
-                
-              //  DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(String));
-               // MemoryStream stream = new MemoryStream();
-                //StreamWriter tw = new StreamWriter(stream);
-                //tw.Write(response);
-                //tw.Flush();
-                //stream.Position = 0;
-                //String src = (String)ser.ReadObject(stream);
                 String html = trans.Transform(response,mer);
                 cont.Content = html;
                 return cont;
@@ -50,7 +43,43 @@ namespace MerchantManage.Controllers
             cont.Content = "Merchant does not exist.";
             return cont;
         }
-       
+        private ActionResult Intro()
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\csharp\MerchantManage\MerchantManage\App_Data\certitude.mdf;Integrated Security=True");
+            SqlCommand command = new SqlCommand();
+            command.Connection = conn;
+            command.CommandText = "select MERCHANTID,MERCHANTNAME,LOGO from TBMERCHANT";
+            conn.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            String s = "";
+            while (reader.Read())
+            {
+                s += "<Division id=\"" + reader.GetString(0) + "\"" + " preferredName=\"" + reader.GetString(1) +
+                    "\">" + "<Logo>" + reader.GetString(2) + "</Logo></Division>";
+            }
+            reader.Close();
+            command = new SqlCommand();
+            command.CommandText = "select ID,NAME,LOGO,TEMPLATE from Zone";
+            command.Connection = conn;
+            reader = command.ExecuteReader();
+            String w = "<Catalogue><Zone id=";
+            String xsl = "";
+            while (reader.Read())
+            {
+                w += "\"" + reader.GetString(0) + "\"" + " preferredName=\"" + reader.GetString(1) +
+                    "\"" + "><Logo>" + reader.GetString(2) + "</Logo>" + s + "</Zone></Catalogue>";
+                xsl = reader.GetString(3);
+            }
+            Merchant dummyMerchant = new Merchant();
+            dummyMerchant.XsltTemplate = xsl;
+            ContentResult listContent = new ContentResult();
+            String src = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + w ;
+            reader.Close();
+            conn.Close();
+            XslTransformer transformer = new XslTransformer();
+            listContent.Content = transformer.Transform(src, dummyMerchant);
+            return listContent;
+        }
         public ActionResult ArticleCount()
         {
             Basket basket = null;

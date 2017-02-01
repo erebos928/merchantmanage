@@ -19,17 +19,17 @@ namespace MerchantManage.Controllers
 
             //Read data from table tbmerchant
             ViewBag.Results = merchantManagerFactory.CreateMerchantManager().GetAll();
-            return View("Resulta2t");
+            return View();
         }
         //Edit a merchant 
-        public ActionResult EditMerchant(int id)
+        public ActionResult EditMerchant(String id)
         {
             merchantManagerFactory = (MerchantManagerFactory)System.Web.HttpContext.Current.Application["merchantManagerFactory"];
 
-            String str= id.ToString();
-            if (str != null)
+            
+            if (id != null)
             {
-                Merchant mer = merchantManagerFactory.CreateMerchantManager().FindById(str);
+                Merchant mer = merchantManagerFactory.CreateMerchantManager().FindById(id);
                 if(mer != null)
                 {
                     ViewBag.merid = mer.merid;
