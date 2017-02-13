@@ -12,22 +12,29 @@ namespace MerchantManage.transport
     {
         public async Task<String> SendRequest(Merchant mer, String currentNode)
         {
-            return await Req(mer.uri, currentNode);
+            return await Req(mer, currentNode);
            
         }
      
-         async Task<String> Req(String Uri, String param)
+         async Task<String> Req(Merchant mer, String param)
         {
             HttpClient cli = new HttpClient();
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, Uri);// "http://localhost:8733/Design_Time_Addresses/AztechService/Service1/Explore");
-
-
-            request.Content = new StringContent(param);//"<?xml version=\"1.0\" encoding=\"utf-8\"?><string>2.1</string>");
-            request.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-            cli.BaseAddress = new Uri(Uri);//"http://localhost:8733/Design_Time_Addresses/AztechService/Service1/Explore");
-
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, mer.uri);
+            String token = mer.username + ":" + mer.password;
+            byte[] t = System.Text.Encoding.ASCII.GetBytes(token);
+            String base64Str = Convert.ToBase64String(t);
+            String authHeader = "Basic " + base64Str;
+            System.Net.Http.Headers.AuthenticationHeaderValue header = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic",base64Str);
             cli.DefaultRequestHeaders.Add("Accept-Encoding", "gzip,deflate");
-            cli.DefaultRequestHeaders.Add("User-Agent", "Apachee");
+
+            cli.DefaultRequestHeaders.Authorization = header;
+            request.Content = new StringContent(param);
+            request.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+            cli.BaseAddress = new Uri(mer.uri);
+
+            
+            //cli.DefaultRequestHeaders.Add("User-Agent", "Apachee");
+            
             HttpResponseMessage resp = await cli.SendAsync(request);
             resp.EnsureSuccessStatusCode();
             String j = await resp.Content.ReadAsStringAsync();
