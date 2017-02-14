@@ -178,10 +178,12 @@
     <Compile Include="Controllers\HeadController.cs" />
     <Compile Include="DAO\DBMerchantManager.cs" />
     <Compile Include="DAO\DBMerchantManagerFactory.cs" />
+    <Compile Include="DAO\DBZoneManager.cs" />
     <Compile Include="Models\Basket.cs" />
     <Compile Include="Models\Feature.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\XslTransformer.cs" />
+    <Compile Include="Models\Zone.cs" />
     <Compile Include="test\Categories.cs" />
     <Compile Include="Models\Merchant.cs" />
     <Compile Include="Global.asax.cs">
@@ -285,8 +287,11 @@
     <Content Include="Views\Admin\AddMerchant.cshtml" />
     <Content Include="Views\Admin\Main.cshtml" />
     <Content Include="Views\Admin\EditMerchant.cshtml" />
+    <Content Include="Views\Admin\AddZone.cshtml" />
+    <Content Include="Views\Admin\EditZone.cshtml" />
     <None Include="Views\Admin\GestionMerchant.cshtml" />
     <Content Include="Views\Admin\ViewPage1.cshtml" />
+    <Content Include="Views\Admin\GestionZone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bdd\" />
