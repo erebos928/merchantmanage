@@ -45,7 +45,7 @@ namespace MerchantManage.Controllers
         }
         private ActionResult Intro()
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\csharp\MerchantManage\MerchantManage\App_Data\certitude.mdf;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(MvcApplication.ConnString1);
             SqlCommand command = new SqlCommand();
             command.Connection = conn;
             command.CommandText = "select MERCHANTID,MERCHANTNAME,LOGO from TBMERCHANT";
