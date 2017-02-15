@@ -17,6 +17,10 @@ namespace MerchantManage.Models
         {
             Processor processor = new Processor();
             XsltCompiler compiler = processor.NewXsltCompiler();
+            XdmAtomicValue[] ss = { new XdmAtomicValue(DAO.DBZoneManager.GetLogo()) };
+            
+            XdmValue v = new XdmValue(ss.AsEnumerable());
+            
             //FileStream stream = new FileStream(@"E:\csharp\MerchantManage\MerchantManage\test\xml\gabarit3.xsl", FileMode.Open);
             MemoryStream mstream = new MemoryStream();
             if (String.IsNullOrEmpty(mer.XsltTemplate))
@@ -25,6 +29,8 @@ namespace MerchantManage.Models
             mstream.Write(template,0,template.Length);
             mstream.Position = 0;
             XsltTransformer xt = compiler.Compile(mstream).Load();
+            xt.SetParameter(new QName("zonelogo"), v);
+            
             MemoryStream instream = new MemoryStream();
             byte[] bs = System.Text.Encoding.UTF8.GetBytes(source);
             instream.Write(bs,0,bs.Length);

@@ -95,6 +95,20 @@ namespace MerchantManage.DAO
             command.ExecuteNonQuery();
             connection.Close();
         }
+        public static String GetLogo()
+        {
+            if (repositoryZone.Count == 0)
+            {
+                DBZoneManager m = new DBZoneManager();
+                List<Zone> lst = m.GetAll();
+                if (lst.Count > 0)
+                    return lst.ElementAt(0).Logo;
+                else
+                    return "";
+            }
+            else
+                    return repositoryZone.ElementAt(0).Value.Logo;
+        }
 
     }
 }
