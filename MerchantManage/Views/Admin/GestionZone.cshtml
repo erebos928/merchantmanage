@@ -22,7 +22,7 @@
                 <th> ID </th>
                 <th> Name </th>
                 <th> Logo </th>
-                <th> Template </th>
+             
             </tr>
             @if (ViewBag.Results != null)
             {
@@ -32,7 +32,7 @@
                         <td> @zone.ID </td>
                         <td> @zone.Name </td>
                         <td> @zone.Logo </td>
-                        <td> @zone.Template </td>
+                        
                         <td>
                             @Html.ActionLink("Edit", "/EditZone", new { id = zone.ID }) |
                             @Html.ActionLink("Delete", "/DeleteZone", new { id = zone.ID })

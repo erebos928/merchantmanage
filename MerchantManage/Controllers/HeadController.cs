@@ -59,7 +59,7 @@ namespace MerchantManage.Controllers
             }
             reader.Close();
             command = new SqlCommand();
-            command.CommandText = "select ID,NAME,LOGO,TEMPLATE from Zone";
+            command.CommandText = "select ID,NAME,LOGO,TEMPLATE from TBZONE";
             command.Connection = conn;
             reader = command.ExecuteReader();
             String w = "<Catalogue><Zone id=";
